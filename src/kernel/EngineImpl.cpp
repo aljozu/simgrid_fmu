@@ -344,6 +344,26 @@ void EngineImpl::load_platform(const std::string& platf)
   XBT_DEBUG("PARSE TIME: %g", (end - start));
 }
 
+void EngineImpl::load_fmuconfig(const std::string& conf)
+{
+  double start = xbt_os_time();
+  if (boost::algorithm::ends_with(conf, ".so") || boost::algorithm::ends_with(conf, ".dylib")) {
+    void* handle = dlopen(conf.c_str(), RTLD_LAZY);
+    xbt_assert(handle, "Impossible to open platform file: %s", conf.c_str());
+    platf_handle_           = std::unique_ptr<void, std::function<int(void*)>>(handle, dlclose);
+    using load_fct_t = void (*)(const simgrid::s4u::Engine&);
+    auto callable           = (load_fct_t)dlsym(platf_handle_.get(), "load_fmuconf");
+    const char* dlsym_error = dlerror();
+    xbt_assert(not dlsym_error, "Error: %s", dlsym_error);
+    callable(*simgrid::s4u::Engine::get_instance());
+  } else {
+    parse_platform_file(conf);
+  }
+
+  double end = xbt_os_time();
+  XBT_DEBUG("PARSE TIME: %g", (end - start));
+}
+
 void EngineImpl::load_deployment(const std::string& file) const
 {
   sg_platf_parser_finalize();

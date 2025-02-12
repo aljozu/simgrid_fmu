@@ -256,6 +256,11 @@ void Engine::load_platform(const std::string& platf) const
   pimpl_->load_platform(platf);
 }
 
+void Engine::load_fmuconfig(const std::string& conf) const
+{
+  pimpl_->load_fmuconfig(conf);
+}
+
 void Engine::seal_platform() const
 {
   pimpl_->seal_platform();
@@ -814,6 +819,10 @@ void simgrid_init(int* argc, char** argv)
 void simgrid_load_platform(const char* file)
 {
   simgrid::s4u::Engine::get_instance()->load_platform(file);
+}
+void simgrid_load_fmuconfig(const char* file)
+{
+  simgrid::s4u::Engine::get_instance()->load_fmuconfig(file);
 }
 
 void simgrid_load_deployment(const char* file)

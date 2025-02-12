@@ -68,6 +68,7 @@ public:
    * @endrst
    */
   void load_platform(const std::string& platf) const;
+  void load_fmuconfig(const std::string& platf) const;
   /**
    * @brief Seals the platform, finishing the creation of its resources.
    *

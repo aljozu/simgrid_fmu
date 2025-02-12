@@ -76,6 +76,7 @@ public:
     return cmdline_;
   }
   void load_platform(const std::string& platf);
+  void load_fmuconfig(const std::string& conf);
   void load_deployment(const std::string& file) const;
   void seal_platform() const;
   void register_function(const std::string& name, const actor::ActorCodeFactory& code);
