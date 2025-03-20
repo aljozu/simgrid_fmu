@@ -3,8 +3,8 @@
 <platform version="4.1">
   <zone id="world" routing="Full">
     <!-- The resources -->
-    <host id="Tremblay" speed="25Mf"/>
-    <host id="Jupiter" speed="25Mf"/>
+    <host id="Tremblay" speed="50Mf"/>
+    <host id="Jupiter" speed="50Mf"/>
     <link id="1" bandwidth="125MBps" latency="100us"/>
 
     <!-- The routing between resources -->

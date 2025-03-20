@@ -1,0 +1,11 @@
+<?xml version='1.0'?>
+<!DOCTYPE platform SYSTEM "https://simgrid.org/simgrid.dtd">
+<platform version="4.1">
+  <process host="host0" function="mpi_program">
+    <argument value="is"/> <!-- Example: bt benchmark, class A, 2 processes -->
+  </process>
+  <process host="host1" function="mpi_program">
+  
+    <argument value="is"/>
+  </process>
+</platform>

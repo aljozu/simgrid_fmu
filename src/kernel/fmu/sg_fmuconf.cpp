@@ -23,4 +23,5 @@ void simgrid_parse_fmu(const std::string&file)
     if (file_to_parse == nullptr )
         throw std::invalid_argument("Unable to open '" + file + "' from '" + simgrid::xbt::Path().get_name() +
                                 "'. Does this file exist?");
+    
 }
